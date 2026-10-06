@@ -1,0 +1,68 @@
+﻿@model WebAppPelda.Models.Vasarlo;
+
+@{
+    ViewData["Title"] = "Új vásárló rögzítése";
+}
+
+<div class="container mt-4" style="max-width: 600px;">
+    <h2 class="mb-4">Vásárló adatai</h2>
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            @TempData["SuccessMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    }
+
+    <form asp-action="UjVasarlo" method="post" class="needs-validation" novalidate>
+        @* CSRF Token automatikusan generálva asp-action használatakor *@
+
+        <div class="mb-3">
+            <label asp-for="Nev" class="form-label"></label>
+            <input asp-for="Nev" class="form-control" placeholder="Minta János" />
+            <!--
+            <span asp-validation-for="Nev" class="text-danger"></span>
+            -->
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Cim" class="form-label"></label>
+            <input asp-for="Cim" class="form-control" placeholder="1051 Budapest, Fő tér 1." />
+            <!--
+            <span asp-validation-for="Cim" class="text-danger"></span>
+            -->
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Email" class="form-label"></label>
+            <input asp-for="Email" class="form-control" placeholder="janos@example.com" />
+            <!--
+                <span asp-validation-for="Email" class="text-danger"></span>
+            -->
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Telefon" class="form-label"></label>
+            <input asp-for="Telefon" class="form-control" placeholder="+36301234567" />
+            <!--
+            <span asp-validation-for="Telefon" class="text-danger"></span>
+			-->
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Pontszam" class="form-label"></label>
+            <input asp-for="Pontszam" type="number" class="form-control" />
+            <!--
+            <span asp-validation-for="Pontszam" class="text-danger"></span>
+            -->
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100">Mentés</button>
+    </form>
+</div>
+
+@section Scripts {
+    @* Kliensoldali validáció bekapcsolása ASP.NET Core-ban *@
+    <partial name="_ValidationScriptsPartial" />
+}

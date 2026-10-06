@@ -1,0 +1,24 @@
+﻿@{
+    ViewData["Title"] = "Saját aloldal";
+}
+<h1>@ViewData["Title"]</h1>
+
+<h2>Vásárlók adatai</h2>
+<table>
+	<thead>
+        <tr>
+            <th>Vásárló neve</th>
+		    <th>Vásárló címe</th>
+	    </tr>
+    </thead>
+    <tbody>
+    @foreach (var vasarlo in Model)
+    {
+        <tr>
+                <td><a asp-area="" asp-controller="Home" asp-action="Vasarlo" asp-route-id="@vasarlo.Id">@vasarlo.Nev</a></td>
+            <td>@vasarlo.Cim</td>
+        </tr>
+    }
+    </tbody>
+</table>
+
